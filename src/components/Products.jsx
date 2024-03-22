@@ -1,26 +1,26 @@
 import './Products.css';
-
-export function Products(){
+import {AddToCartIcon} from './Icons.jsx'
+export function Products({products}){
     return(
         <main className="products">
-            <h1>Saludos Des Products</h1>
+
             <ul>
-                <li><img src="" alt="PRODUCTO" /></li>
-                <div>
-                    titulo - precio
-                </div>
-                <div>
-                    <button>ADD</button>
-                </div>
-                <li><img src="" alt="PRODUCTO2" /></li>
-                <div>
-                    titulo - precio
-                </div>
-                <div>
-                    <button>ADD</button>
-                </div>
-                
+            {
+                products.slice(0,9).map((product) =>(
+                    <li key={product.id}>
+                        <img src={product.thumbnail} alt={product.title} />
+                        <div>
+                            <strong>{product.title} - ${product.price}</strong>
+                        </div>
+                        <div>
+                            <button>
+                                <AddToCartIcon/>
+                            </button>
+                        </div>
+                    </li>
+                ))
+            }
             </ul>
         </main>
-    )
+    );
 }
